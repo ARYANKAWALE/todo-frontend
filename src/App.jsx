@@ -7,6 +7,8 @@ import Profile from './pages/profile.jsx'
 import { Toaster } from 'react-hot-toast'
 import AddTodo from './pages/addTodo.jsx'
 
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+
 function App() {
 
   return (
@@ -36,12 +38,15 @@ function App() {
       />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='/todo/:id' element={<EditTodo />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/add' element={<AddTodo />} />
+
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Home />} />
+            <Route path='/todo/:id' element={<EditTodo />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/add' element={<AddTodo />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
