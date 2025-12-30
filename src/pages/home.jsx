@@ -25,7 +25,11 @@ const Home = () => {
             setTodos(response.data.data)
         } catch (error) {
             console.log("Error fetching todos", error)
-            toast.error("Failed to load todos")
+            if (error.response && error.response.status === 401) {
+                navigate("/login")
+            } else {
+                toast.error("Failed to load todos")
+            }
         } finally {
             setLoading(false)
         }
@@ -39,6 +43,9 @@ const Home = () => {
             setUser(response.data.data)
         } catch (error) {
             console.log("Error fetching user", error)
+            if (error.response && error.response.status === 401) {
+                navigate("/login")
+            }
         }
     }
 
