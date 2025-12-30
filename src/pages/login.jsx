@@ -28,7 +28,7 @@ const Login = () => {
         console.log("Submitting:", data);
         try {
             const response = await axios.post(
-                "http://localhost:4000/api/v4/users/login",
+                "/api/v4/users/login",
                 data,
                 {
                     withCredentials: true
@@ -41,7 +41,7 @@ const Login = () => {
             console.error("Login Error:", error);
             if (error.response?.status === 404 || error.response?.status === 401) {
                 setMessage("User does not exist or incorrect password", "danger");
-                setTimeout(()=>navigate("/Register"),2000)
+                setTimeout(() => navigate("/register"), 2000)
             }
             else if (error.response?.data?.message) {
                 setMessage(error.response.data.message, "danger");

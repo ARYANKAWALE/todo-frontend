@@ -14,7 +14,7 @@ const AddTodo = () => {
         e.preventDefault()
         setLoading(true)
         try {
-            const response = await axios.post('http://localhost:4000/api/v4/todos/add', {
+            const response = await axios.post('/api/v4/todos/add', {
                 headline,
                 content
             }, {
@@ -37,23 +37,23 @@ const AddTodo = () => {
         <div className='min-h-screen bg-[#fafafa] text-black flex justify-center items-center p-4'>
             <div className='bg-[#fdfdfd] rounded-2xl shadow-xl w-full max-w-[70vh] pb-8'>
                 <div className='flex gap-2 bg-gray-500 p-2 rounded-tr-2xl rounded-tl-2xl'>
-                        <div className='w-4 h-4 bg-red-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-red-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-red-900'>×</span>
-                        </div>
-                        <div className='w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-yellow-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-yellow-900'>−</span>
-                        </div>
-                        <div className='w-4 h-4 bg-green-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-green-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-green-900'>+</span>
-                        </div>
+                    <div className='w-4 h-4 bg-red-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-red-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-red-900'>×</span>
                     </div>
+                    <div className='w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-yellow-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-yellow-900'>−</span>
+                    </div>
+                    <div className='w-4 h-4 bg-green-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-green-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-green-900'>+</span>
+                    </div>
+                </div>
                 <h2 className='text-2xl font-bold mb-6 pl-6 pr-6'>Add New Todo</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-4 pl-6 pr-6">  
+                    <div className="mb-4 pl-6 pr-6">
                         <label htmlFor="headline" className="block text-sm font-medium mb-2">Headline</label>
                         <input type="text" id="headline" value={headline} onChange={(e) => setHeadline(e.target.value)} className="w-full p-2 text-black bg-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
-                    <div className="mb-4 pl-6 pr-6">  
+                    <div className="mb-4 pl-6 pr-6">
                         <label htmlFor="content" className="block text-sm font-medium mb-2">Content</label>
                         <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} className="w-full p-2 text-black bg-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
                     </div>

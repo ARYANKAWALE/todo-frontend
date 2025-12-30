@@ -18,7 +18,7 @@ const EditTodo = () => {
 
     const fetchTodo = async () => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/v4/todos/${id}`, {
+            const response = await axios.get(`/api/v4/todos/${id}`, {
                 withCredentials: true
             })
             console.log("Fetched Todo:", response.data)
@@ -41,7 +41,7 @@ const EditTodo = () => {
     const handleUpdate = async (e) => {
         e.preventDefault()
 
-        const updatePromise = axios.patch(`http://localhost:4000/api/v4/todos/modify/${id}`, {
+        const updatePromise = axios.patch(`/api/v4/todos/modify/${id}`, {
             headline: headline,
             content: content
         }, {
@@ -75,7 +75,7 @@ const EditTodo = () => {
 
         setDeleting(true)
 
-        const deletePromise = axios.delete(`http://localhost:4000/api/v4/todos/modify/${id}`, {
+        const deletePromise = axios.delete(`/api/v4/todos/modify/${id}`, {
             withCredentials: true
         })
 
@@ -113,16 +113,16 @@ const EditTodo = () => {
         <div className="min-h-screen bg-[#fafafa] text-black flex justify-center items-center p-4">
             <div className='bg-[#fdfdfd] rounded-2xl shadow-xl w-full max-w-[70vh] pb-8'>
                 <div className='flex gap-2 bg-gray-500 p-2 rounded-tr-2xl rounded-tl-2xl'>
-                        <div className='w-4 h-4 bg-red-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-red-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-red-900'>×</span>
-                        </div>
-                        <div className='w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-yellow-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-yellow-900'>−</span>
-                        </div>
-                        <div className='w-4 h-4 bg-green-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-green-600 transition-colors'>
-                            <span className='hidden group-hover:block text-[10px] font-bold text-green-900'>+</span>
-                        </div>
+                    <div className='w-4 h-4 bg-red-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-red-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-red-900'>×</span>
                     </div>
+                    <div className='w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-yellow-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-yellow-900'>−</span>
+                    </div>
+                    <div className='w-4 h-4 bg-green-500 rounded-full flex items-center justify-center group cursor-pointer hover:bg-green-600 transition-colors'>
+                        <span className='hidden group-hover:block text-[10px] font-bold text-green-900'>+</span>
+                    </div>
+                </div>
                 <div className='flex justify-between items-center mb-6 pl-6 pr-6 pt-2'>
                     <h1 className="text-3xl font-bold text-center text-blue-500">Edit Todo</h1>
                     <FontAwesomeIcon

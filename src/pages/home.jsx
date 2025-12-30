@@ -19,7 +19,7 @@ const Home = () => {
 
     const fetchTodos = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/v4/todos/", {
+            const response = await axios.get("/api/v4/todos/", {
                 withCredentials: true
             })
             setTodos(response.data.data)
@@ -33,7 +33,7 @@ const Home = () => {
 
     const fetchUser = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/v4/users/current-user", {
+            const response = await axios.get("/api/v4/users/current-user", {
                 withCredentials: true
             })
             setUser(response.data.data)
@@ -49,7 +49,7 @@ const Home = () => {
 
     const logout = async () => {
         try {
-            await axios.post("http://localhost:4000/api/v4/users/logout", {}, {
+            await axios.post("/api/v4/users/logout", {}, {
                 withCredentials: true
             })
             toast.success("Logged out successfully!")
@@ -60,7 +60,7 @@ const Home = () => {
         }
     }
 
-    const handleAddTodo = (addTodo) => {
+    const handleAddTodo = () => {
         navigate("/add")
     }
 
@@ -78,7 +78,7 @@ const Home = () => {
         const searchTodos = async () => {
             if (query.length > 0) {
                 try {
-                    const res = await axios.get(`http://localhost:4000/api/v4/todos/search?search=${query}`, {
+                    const res = await axios.get(`/api/v4/todos/search?search=${query}`, {
                         withCredentials: true
                     });
                     setTodos(res.data.data);

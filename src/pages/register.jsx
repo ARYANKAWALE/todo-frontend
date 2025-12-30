@@ -43,7 +43,7 @@ const Register = () => {
     console.log("Submitting:", data);
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/v4/users/register",
+        "/api/v4/users/register",
         data,
         {
           withCredentials: true

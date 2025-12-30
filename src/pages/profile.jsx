@@ -5,12 +5,12 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import toast from 'react-hot-toast'
 
-const profile = () => {
+const Profile = () => {
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     const fetchUser = async () => {
         try {
-            const response = await axios.get("http://localhost:4000/api/v4/users/current-user", {
+            const response = await axios.get("/api/v4/users/current-user", {
                 withCredentials: true
             })
             setUser(response.data.data)
@@ -24,7 +24,7 @@ const profile = () => {
 
     const logout = async () => {
         try {
-            await axios.post("http://localhost:4000/api/v4/users/logout", {}, {
+            await axios.post("/api/v4/users/logout", {}, {
                 withCredentials: true
             })
             toast.success("Logged out successfully!")
@@ -45,7 +45,7 @@ const profile = () => {
                 <p className='text-xl border rounded p-2'>{user?.fullname}</p>
                 <label htmlFor="email" className='text-sm font-bold'>Email</label>
                 <p className='text-lg border rounded p-2 overflow-hidden'>{user?.email}</p>
-                
+
                 <p className='text-lg rounded p-2 mb-4'>User Created At: <br />
                     {user?.createdAt ? new Date(user.createdAt).toLocaleDateString('en-IN', {
                         day: 'numeric',
@@ -57,12 +57,12 @@ const profile = () => {
                     }) : ""}
                 </p>
                 <div className='flex gap-2'>
-                <button className=' w-full text-white p-2 rounded-md bg-blue-500 transition-colors hover:bg-blue-600' onClick={() => navigate('/')} type="button">Return</button>
-                <button onClick={logout} className=' p-2 rounded bg-red-400 font-bold text-white hover:bg-red-600 transition-colors'>Logout</button>
+                    <button className=' w-full text-white p-2 rounded-md bg-blue-500 transition-colors hover:bg-blue-600' onClick={() => navigate('/')} type="button">Return</button>
+                    <button onClick={logout} className=' p-2 rounded bg-red-400 font-bold text-white hover:bg-red-600 transition-colors'>Logout</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default profile
+export default Profile
